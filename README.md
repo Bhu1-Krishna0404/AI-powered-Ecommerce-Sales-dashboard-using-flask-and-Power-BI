@@ -62,7 +62,8 @@ Copy
 Edit
 # Power BI paths
 POWER_BI_PATH = r"C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe"
-PBIX_FILE = r"C:\Users\YourUsername\Desktop\fail3\Ecommerce.pbix"
+
+PBIX_FILE = r"C:\Users\YourUsername\Desktop\file\Ecommerce.pbix"
 Replace with your actual paths.
 
 🧠 ML Models Used
