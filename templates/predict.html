@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict Sales & Profit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h2>Sales & Profit Prediction</h2>
+
+    {% if predicted_sales is not none %}
+        <div class="result">
+            <h3>Predicted Sales: ${{ predicted_sales }}</h3>
+            <h3>{{ profit_prediction }}</h3>
+        </div>
+    {% endif %}
+
+    <div class="dashboard-container">
+        <form method="POST">
+            <div class="form-group">
+                <label for="category_name">Category Name</label>
+                <input type="text" id="category_name" name="category_name" required>
+            </div>
+            <div class="form-group">
+                <label for="customer_region">Customer Region</label>
+                <input type="text" id="customer_region" name="customer_region" required>
+            </div>
+            <div class="form-group">
+                <label for="shipping_type">Shipping Type</label>
+                <input type="text" id="shipping_type" name="shipping_type" required>
+            </div>
+            <div class="form-group">
+                <label for="order_quantity">Order Quantity</label>
+                <input type="number" id="order_quantity" name="order_quantity" required>
+            </div>
+            <div class="form-group">
+                <label for="days_for_shipment_scheduled">Days for Shipment Scheduled</label>
+                <input type="number" id="days_for_shipment_scheduled" name="days_for_shipment_scheduled" required>
+            </div>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+
+    <a href="{{ url_for('chart') }}" style="padding: 10px 20px; background: red; color: white; text-decoration: none; border-radius: 8px; display: block; text-align: center; margin-top: 30px;">Visualization</a>
+
+</body>
+</html>

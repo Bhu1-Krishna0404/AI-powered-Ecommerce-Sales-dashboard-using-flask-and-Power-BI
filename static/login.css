@@ -1,0 +1,121 @@
+/* login.css */
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Title Styling */
+h2 {
+    color: #007acc;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+}
+
+/* Title Effect */
+h2::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-color: #007acc;
+    bottom: -10px;
+    left: 0;
+    animation: slide 0.6s ease-in-out;
+}
+
+@keyframes slide {
+    0% {
+        width: 0;
+        left: 50%;
+    }
+    50% {
+        width: 50%;
+        left: 25%;
+    }
+    100% {
+        width: 100%;
+        left: 0;
+    }
+}
+
+/* Login Form Container */
+.login-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 16px;
+    color: #555;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.form-group input:focus {
+    border-color: #007acc;
+    box-shadow: 0 0 5px rgba(0, 122, 204, 0.5);
+}
+
+/* Submit Button */
+input[type="submit"] {
+    background-color: #007acc;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #005f99;
+}
+
+/* Error Message */
+.error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+}

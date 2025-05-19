@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales by Category Filter</title>
+    <style>
+        /* General Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0099ff, #66ccff);
+            color: #fff;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Container for Filters and Navigation */
+        .dashboard-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+        }
+
+        .filters-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filters-container select,
+        .filters-container button {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            width: 250px;
+            outline: none;
+            transition: transform 0.3s ease;
+        }
+
+        .filters-container select:hover,
+        .filters-container button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .filters-container button {
+            background: #ff4081;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .filters-container button:hover {
+            background: #e7376e;
+        }
+
+        /* Label Styling */
+        label {
+            font-weight: 600;
+            font-size: 18px;
+            color: #333; /* Dark gray color for labels */
+            margin-right: 10px;
+        }
+
+        /* Chart Container with Hover Effects */
+        .chart-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Navigation Button Style */
+        .nav-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ff4081;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .nav-button:hover {
+            background-color: #e7376e;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Styling for Smaller Devices */
+        @media (max-width: 768px) {
+            .filters-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filters-container select, 
+            .filters-container button {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .nav-button {
+                width: 100%;
+            }
+        }
+    </style>
+    <!-- Poppins Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <h2>Sales Dashboard (Filter by Region and Category)</h2>
+
+    <!-- Filters and Controls Container -->
+    <div class="dashboard-container">
+        <div class="filters-container">
+            <form method="POST">
+                <div>
+                    <label for="region">Region:</label>
+                    <select name="region" id="region">
+                        {% for region in regions %}
+                            <option value="{{ region }}" {% if region == selected_region %}selected{% endif %}>{{ region }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <label for="category">Category:</label>
+                    <select name="category" id="category">
+                        {% for category in categories %}
+                            <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>{{ category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit">Filter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chart Display -->
+    <div class="chart-container">
+        {{ chart | safe }}
+    </div>
+
+    <!-- Navigation Button -->
+    <a class="nav-button" href="/charts">Go to Chart Type Dashboard →</a>
+
+</body>
+</html>
